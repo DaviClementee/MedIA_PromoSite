@@ -11,7 +11,7 @@ https://templatemo.com/tm-566-medic-care
 -----------------------------------------*/
 :root {
   --white-color:                  #FFFFFF;
-  --primary-color:                #247cff;
+  --primary-color:                #ff0000; /* ALTERADO PARA VERMELHO */
   --section-bg-color:             #F9F9F9;
   --dark-color:                   #000000;
   --title-color:                  #565758;
@@ -136,10 +136,7 @@ a:hover {
   padding: 0 30px;
   box-sizing: border-box;
   margin: 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   overflow: hidden;
   border-radius: 0;
   text-transform: uppercase;
@@ -224,31 +221,13 @@ strong {
 }
 
 @keyframes BottomTotop {
-  0% {
-    opacity: 0;
-  }
-  5% {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  10% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  25% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  30% {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  80% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  5% { opacity: 0; transform: translateY(5px); }
+  10% { opacity: 1; transform: translateY(0px); }
+  25% { opacity: 1; transform: translateY(0px); }
+  30% { opacity: 0; transform: translateY(5px); }
+  80% { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 /*---------------------------------------
@@ -360,31 +339,6 @@ strong {
   outline: none;
 }
 
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-  background: transparent;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before,
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-  transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
-  transition: top 300ms 50ms ease, transform 300ms 350ms ease;
-  transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
-  top: 0;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
-  transform: rotate(45deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-  transform: rotate(-45deg);
-}
-
 .navbar-toggler .navbar-toggler-icon {
   background: var(--dark-color);
   transition: background 10ms 300ms ease;
@@ -396,9 +350,6 @@ strong {
 
 .navbar-toggler .navbar-toggler-icon:before,
 .navbar-toggler .navbar-toggler-icon:after {
-  transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
-  transition: top 300ms 350ms ease, transform 300ms 50ms ease;
-  transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
   position: absolute;
   right: 0;
   left: 0;
@@ -464,7 +415,7 @@ strong {
 .timeline-nodes:nth-child(odd) .timeline-date {
   text-align: left;
 }
- 
+
 .timeline-nodes:nth-child(even) .timeline-date {
   text-align: right;
 }
@@ -526,89 +477,6 @@ strong {
   display: block;
   text-align: center;
   line-height: 80px;
-}
-
-@media (max-width: 767px) {
-  .timeline-nodes:nth-child(odd) h3,
-  .timeline-nodes:nth-child(odd) p {
-    text-align: left;
-  }
-
-  .timeline-nodes:nth-child(even) {
-    flex-direction: row;
-  }
-
-  .timeline::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 60px;
-    left: 33px;
-    width: 0;
-    height: 90%;
-    z-index: 1;
-    transform: translateX(-50%);
-  }
-
-  .timeline-icons {
-    position: absolute;
-    left: 0%;
-    top: 60px;
-  }
-
-  .timeline-nodes:nth-child(odd) h3::after {
-    left: auto;
-    right: 100%;
-    border-left: 0;
-    border-right: 10px solid var(--dark-color);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-  }
-
-  .timeline-nodes:nth-child(even) h3::after {
-    right: 100%;
-    width: 0;
-    border-right: 10px solid var(--dark-color);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-  }
-
-  .timeline-nodes:nth-child(even) .timeline-date {
-    text-align: left;
-  }
-
-  .timeline-icons::before {
-    width: 75px;
-    height: 75px;
-  }
-
-  .timeline-icon {
-    line-height: 75px;
-  }
-}
-
-@media (max-width: 575px) {
-  .timeline::before {
-    content: "";
-    display: block;
-    top: 60px;
-    left: 57px;
-    height: 87%;
-  }
-
-  .timeline-icons {
-    position: absolute;
-    left: -10px;
-  }
-
-  .timeline-icons::before {
-    width: 70px;
-    height: 70px;
-  }
-
-  .timeline-icon {
-    line-height: 70px;
-  }
 }
 
 /*---------------------------------------
@@ -785,29 +653,12 @@ strong {
     padding-top: 74px;
   }
 
-  h1 {
-    font-size: 38px;
-  }
-
-  h2 {
-    font-size: 32px;
-  }
-
-  h3 {
-    font-size: 26px;
-  }
-
-  h4 {
-    font-size: 24px;
-  }
-
-  h5 {
-    font-size: 20px;
-  }
-
-  h6 {
-    font-size: 18px;
-  }
+  h1 { font-size: 38px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 26px; }
+  h4 { font-size: 24px; }
+  h5 { font-size: 20px; }
+  h6 { font-size: 18px; }
 
   .section-padding {
     padding-top: 5rem;

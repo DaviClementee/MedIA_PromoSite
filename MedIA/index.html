@@ -3,221 +3,322 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="description" content="Projeto PAP sobre MedIA - Inteligência Artificial aplicada à Medicina">
-    <meta name="author" content="Aluno PAP">
-
+    <meta name="author" content="Davi Bakó">
     <title>MedIA | Inteligência Artificial na Medicina</title>
 
-    <!-- CSS FILES -->        
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="css/templatemo-medic-care.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Open Sans', sans-serif; }
+        h1, h2, h5 { font-family: 'Montserrat', sans-serif; }
+
+        /* NAVBAR */
+        .navbar { padding: 12px 0; }
+        .navbar-brand strong { display: block; font-size: 0.75rem; color: #dc3545; }
+
+        /* CARROSSEL */
+        #hero-carousel { margin-top: 70px; }
+        #medCarousel .carousel-item { height: 90vh; min-height: 400px; }
+        #medCarousel .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            filter: brightness(0.55);
+        }
+        .carousel-caption h5 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
+        .carousel-caption p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+        }
+
+        /* CARDS */
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+        }
+
+        /* FEATURED CIRCLE */
+        .featured-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .featured-text { text-align: center; }
+        .featured-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #dc3545;
+            display: block;
+        }
+
+        section { padding: 80px 0; }
+        #about { background: #f8f9fa; }
+        #reviews { background: #f8f9fa; }
+
+        footer { background: #222; color: #fff; padding: 50px 0; }
+
+        /* TRANSLATE BUTTONS */
+        #translate-buttons button { transition: all 0.3s ease; }
+        #translate-buttons button:hover { opacity: 0.8; transform: scale(1.1); }
+    </style>
 </head>
-    
+
 <body id="top">
+
+<!-- BOTÕES DE TRADUÇÃO -->
+<div id="translate-buttons" style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+    <button onclick="translateTo('pt')" style="margin-right:5px; padding:5px 12px; border-radius:5px; border:none; background:#890505; color:white; cursor:pointer; font-weight:bold;">🇵🇹 PT</button>
+    <button onclick="translateTo('en')" style="padding:5px 12px; border-radius:5px; border:none; background:#3B3B6D; color:white; cursor:pointer; font-weight:bold;">🇺🇸 EN</button>
+</div>
+
+<!-- Google Translate invisível -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
+function translateTo(lang) {
+    var select = document.querySelector("select.goog-te-combo");
+    if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+    }
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <main>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+<nav class="navbar navbar-expand-lg bg-white fixed-top shadow-sm" data-aos="fade-down" data-aos-duration="1000">
     <div class="container">
-
-        <a class="navbar-brand mx-auto d-lg-none" href="index.html">
+        <a class="navbar-brand mx-auto d-lg-none" href="#">
             MedIA
-            <strong class="d-block">PAP</strong>
+            <strong>PAP</strong>
         </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" href="#hero">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">Projeto</a></li>
-                <li class="nav-item"><a class="nav-link" href="#timeline">Evolução</a></li>
+            <ul class="navbar-nav mx-auto align-items-center">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#hero-carousel">Início</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#about">Projeto</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#timeline">Evolução</a></li>
 
-                <a class="navbar-brand d-none d-lg-block" href="index.html">
-                    MedIA
-                    <strong class="d-block">Inteligência Artificial</strong>
-                </a>
+                <!-- Brand center  -->
+                <li class="nav-item d-none d-lg-block mx-3">
+                    <a class="navbar-brand" href="#">
+                        MedIA
+                        <strong>Inteligência Artificial</strong>
+                    </a>
+                </li>
 
-                <li class="nav-item"><a class="nav-link" href="#reviews">Impacto</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#reviews">Impacto</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contacto</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger fw-bold" href="login.html">
+                        <i class="bi bi-shield-lock"></i> Admin
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-<div class="container">
-<div class="row">
-<div class="col-12">
+<!-- CARROSSEL CORRIGIDO -->
+<section id="hero-carousel">
+    <div id="medCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 
-<div class="heroText d-flex flex-column justify-content-center">
-    <h1 class="mt-auto mb-2">
-        MedIA
-        <div class="animated-info">
-            <span class="animated-item">Diagnóstico</span>
-            <span class="animated-item">Tecnologia</span>
-            <span class="animated-item">Futuro</span>
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#medCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#medCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#medCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-    </h1>
 
-    <p class="mb-4">
-        Projeto de Aptidão Profissional sobre a aplicação da Inteligência Artificial na Medicina,
-        focado na inovação, eficiência e melhoria dos cuidados de saúde.
-    </p>
+        <div class="carousel-inner">
 
-    <div class="heroLinks">
-        <a class="custom-link" href="#about" data-hover="Saber mais">Saber mais</a>
+            <div class="carousel-item active">
+                <!-- Imagem online em vez de local -->
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&q=80" class="d-block w-100" alt="Diagnóstico Inteligente">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Diagnóstico Inteligente</h5>
+                    <p>Aplicando Inteligência Artificial à Medicina.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1400&q=80" class="d-block w-100" alt="Inovação Tecnológica">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Inovação Tecnológica</h5>
+                    <p>Soluções avançadas para hospitais e clínicas.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1400&q=80" class="d-block w-100" alt="Eficiência Clínica">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Eficiência Clínica</h5>
+                    <p>Redução de erros e otimização de processos.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#medCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#medCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+
     </div>
-</div>
-
-</div>
-</div>
-</div>
 </section>
 
 <!-- ABOUT -->
-<section class="section-padding" id="about">
-<div class="container">
-<div class="row">
-
-<div class="col-lg-6 col-md-6 col-12">
-    <h2 class="mb-3">O que é a MedIA?</h2>
-
-    <p>
-        A MedIA consiste na utilização de algoritmos de Inteligência Artificial para apoiar
-        fazer um diagnóstico clínico rapido e efeciente, claro a IA não substui uma consulta medica
-        mas é uma otima opção para um diagnostico simples e rapido focado em medicina geral, 
-        a IA é uma tecnologia que tem o potencial de revolucionar a medicina, oferecendo novas formas de diagnóstico, 
-        tratamento e gestão de doenças.
-    </p>
-
-    <p>
-        Este projeto analisa como a IA pode aumentar a precisão clínica, reduzir erros médicos
-        e melhorar a eficiência dos sistemas de saúde.
-    </p>
-</div>
-
-<div class="col-lg-4 col-md-5 col-12 mx-auto">
-    <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
-        <p class="featured-text">
-            <span class="featured-number">IA</span><br>
-            na Saúde
-        </p>
+<section id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right">
+                <h2 class="mb-3">O que é a MedIA?</h2>
+                <p class="lead">A MedIA é um chatbot médico inteligente desenvolvido para apoiar a triagem inicial de sintomas através de automação e Inteligência Artificial.</p>
+                <p>O sistema integra n8n, base de dados estruturada e painel administrativo para monitorização do desempenho.</p>
+                <div class="d-flex gap-3 mt-4">
+                    <div class="text-center">
+                        <h3 class="text-danger fw-bold">n8n</h3>
+                        <small class="text-muted">Automação</small>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-danger fw-bold">IA</h3>
+                        <small class="text-muted">Inteligência</small>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-danger fw-bold">Android</h3>
+                        <small class="text-muted">Plataforma</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-12 mx-auto mt-4 mt-md-0" data-aos="fade-left">
+                <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center card-hover">
+                    <p class="featured-text mb-0">
+                        <span class="featured-number">IA</span>
+                        na Saúde
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-</div>
-</div>
 </section>
 
 <!-- TIMELINE -->
-<section class="section-padding pb-0" id="timeline">
-<div class="container">
-<h2 class="text-center mb-5">Evolução da MedIA</h2>
-
-<div class="timeline">
-
-<div class="timeline-nodes row g-0 align-items-start">
-    <div class="col-9 col-md-5 timeline-content bg-white shadow-lg">
-        <h3 class="text-light">Início da IA Médica</h3>
-        <p>Primeiros sistemas computacionais usados para apoio ao diagnóstico clínico.</p>
+<section id="timeline" style="background:#fff;">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Evolução da MedIA</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-hover p-4 bg-light rounded shadow h-100">
+                    <div class="display-4 mb-3"></div>
+                    <h5>Planeamento</h5>
+                    <p class="text-muted">Definição da arquitetura e modelo ER da base de dados.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-hover p-4 bg-light rounded shadow h-100">
+                    <div class="display-4 mb-3"></div>
+                    <h5>Desenvolvimento</h5>
+                    <p class="text-muted">Integração com n8n e criação do chatbot inteligente.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-hover p-4 bg-light rounded shadow h-100">
+                    <div class="display-4 mb-3"></div>
+                    <h5>Implementação</h5>
+                    <p class="text-muted">Criação do painel administrativo e app Android.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-3 col-sm-1 timeline-icons text-center">
-        <i class="bi-cpu timeline-icon"></i>
-    </div>
-    <div class="col-9 col-md-5 timeline-date">
-    </div>
-</div>
-
-<div class="timeline-nodes row g-0 align-items-start my-4">
-    <div class="col-9 col-md-5 timeline-content bg-white shadow-lg">
-        <h3 class="text-light">Machine Learning</h3>
-        <p>Utilização de grandes volumes de dados clínicos para aprendizagem automática.</p>
-    </div>
-    <div class="col-3 col-sm-1 timeline-icons text-center">
-        <i class="bi-graph-up timeline-icon"></i>
-    </div>
-</div>
-
-<div class="timeline-nodes row g-0 align-items-start">
-    <div class="col-9 col-md-5 timeline-content bg-white shadow-lg">
-        <h3 class="text-light">IA na Atualidade</h3>
-        <p>Diagnósticos assistidos por IA, análise de exames médicos e apoio à decisão clínica.</p>
-    </div>
-    <div class="col-3 col-sm-1 timeline-icons text-center">
-        <i class="bi-heart-pulse timeline-icon"></i>
-    </div>
-    <div class="col-9 col-md-5 timeline-date">
-        <time></time>
-    </div>
-</div>
-
-</div>
-</div>
 </section>
 
 <!-- IMPACTO -->
-<section class="section-padding" id="reviews">
-<div class="container">
-<h2 class="text-center mb-4">Impacto da MedIA</h2>
-
-<div class="row text-center">
-    <div class="col-md-4">
-        <h5>Precisão</h5>
-        <p>Redução de erros médicos através de análise de dados.</p>
+<section id="reviews">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Impacto da MedIA</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-hover p-4 bg-white rounded shadow h-100">
+                    <div class="display-4 mb-3 text-danger"></div>
+                    <h5>Precisão</h5>
+                    <p class="text-muted">Redução de erros médicos através de IA treinada.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-hover p-4 bg-white rounded shadow h-100">
+                    <div class="display-4 mb-3 text-danger"></div>
+                    <h5>Eficiência</h5>
+                    <p class="text-muted">Processos automatizados e resposta em tempo real.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-hover p-4 bg-white rounded shadow h-100">
+                    <div class="display-4 mb-3 text-danger"></div>
+                    <h5>Inovação</h5>
+                    <p class="text-muted">Nova abordagem tecnológica na área da saúde.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h5>Eficiência</h5>
-        <p>Processos clínicos mais rápidos e automatizados.</p>
-    </div>
-    <div class="col-md-4">
-        <h5>Inovação</h5>
-        <p>Novas abordagens no tratamento e prevenção de doenças.</p>
-    </div>
-</div>
-</div>
 </section>
 
 <!-- FOOTER -->
-<footer class="site-footer section-padding" id="contact">
-<div class="container">
-<div class="row">
-
-<div class="col-lg-6 col-12">
-    <h5>Projeto PAP</h5>
-    <p>Curso Profissional – Área Tecnológica</p>
-</div>
-
-<div class="col-lg-6 col-12 text-end">
-    <p class="copyright-text">
-        © 2025 MedIA | Projeto de Aptidão Profissional
-    </p>
-</div>
-
-</div>
-</div>
+<footer id="contact">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-12" data-aos="fade-right">
+                <h5 class="text-white">Projeto PAP — MedIA</h5>
+                <p class="text-white-50">Davi Bakó Clemente  •  12TGPSI  •  2025/2026</p>
+                <p class="text-white-50">Diretora de Curso: Maria Luísa Parente</p>
+            </div>
+            <div class="col-lg-6 col-12 text-lg-end mt-3 mt-lg-0" data-aos="fade-left">
+                <p class="text-white-50 mb-0">© 2025 MedIA | Projeto de Aptidão Profissional</p>
+                <p class="text-white-50">Curso Profissional – Área Tecnológica</p>
+            </div>
+        </div>
+    </div>
 </footer>
 
 </main>
 
-<!-- JS -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/scrollspy.min.js"></script>
-<script src="js/custom.js"></script>
+<!-- Bootstrap JS via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS Animations -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 1000 });
+</script>
 
 </body>
 </html>
